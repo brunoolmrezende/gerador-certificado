@@ -5,6 +5,7 @@
   letter-spacing: 0;
   color: #121621;
   text-align: center;
+  margin-bottom: 4px;
 }
 
 .custom-subtitle {
@@ -60,4 +61,8 @@
   letter-spacing: 0;
   color: #64748B;
   text-align: center;
+}
+
+.list-certificates {
+  max-width: 672px;
 }

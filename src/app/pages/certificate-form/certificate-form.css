@@ -91,3 +91,12 @@ label {
   border: 1px solid #E2E8F0;
   height: 40px;
 }
+
+.custom-input:focus {
+  border-color: #3B5AC2;
+  box-shadow: none;
+}
+
+.custom-input-group:has(input:focus) label {
+  color: #3B5AC2;
+}

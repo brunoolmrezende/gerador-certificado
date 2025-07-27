@@ -1,0 +1,93 @@
+.custom-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0;
+  color: #121621;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.custom-subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #64748b;
+  text-align: center;
+}
+
+.content-titles {
+  height: 60px;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.custom-card {
+  max-width: 672px;
+  gap: 32px;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  padding: 32px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: #1A2856;
+  margin-bottom: 20px;
+}
+
+.activities-group {
+  margin-bottom: 32px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #1A2856;
+}
+
+.item-list {
+  width: 100%;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-list hr {
+  all: unset;
+  height: 1px;
+  display: block;
+  background-color: #E2E8F0;
+  margin: 12px 0;
+}
+
+.remove-btn i {
+  font-size: 12.5px;
+  padding: 5.75px;
+  color: #E95F5F;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.remove-btn i:hover {
+  color: #D71D1D;
+  background-color: #E2E8F0;
+}
+
+.custom-input {
+  border: 1px solid #E2E8F0;
+  height: 40px;
+}

@@ -100,3 +100,25 @@ label {
 .custom-input-group:has(input:focus) label {
   color: #3B5AC2;
 }
+
+.error-message {
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.error-message p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: #D71D1D;
+}
+
+.error-message i {
+  color: #E95F5F;
+}
+
+.custom-input-group:has(.error-message) > label {
+  color: #D71D1D;
+}

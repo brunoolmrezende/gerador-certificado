@@ -1,5 +1,9 @@
+.container-fluid {
+  padding: 0;
+}
+
 .navbar {
-  padding: 1rem 2rem;
+  padding: 1rem 40px 1rem 24px;
   background-color: white;
   border-bottom: 1px solid #E2E8F0;
 }
@@ -9,15 +13,23 @@
   width: 40px;
 }
 
+.nav-link {
+  padding: 6px !important;
+}
+
 .nav-link.active {
   color: #3B5AC2;
+  font-weight: 600;
 }
 
 .active {
   color: #3B5AC2;
 }
 
-.nav-item img {
-  width: 20px;
-  height: 20px;
+.nav-item {
+  cursor: pointer;
+}
+
+.nav-item i {
+  font-size: 20px;
 }

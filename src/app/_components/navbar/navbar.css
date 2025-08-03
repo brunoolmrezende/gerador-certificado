@@ -11,6 +11,7 @@
 .navbar-logo img {
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
 
 .nav-link {

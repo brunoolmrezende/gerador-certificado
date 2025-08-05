@@ -1,3 +1,3 @@
-<button class="custom-button w-100">
-  Botão primário
+<button [ngStyle]="isButtonDisabled ? {'opacity': '50%'} : {}" class="custom-button w-100">
+  {{ buttonText }}
 </button>

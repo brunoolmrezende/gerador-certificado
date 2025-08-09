@@ -21,7 +21,7 @@
         <label for="atividade" class="form-label">Atividade</label>
         <div class="d-flex align-items-center gap-2">
           <input [(ngModel)]="activity" name="activity" #activityRef="ngModel" maxlength="50" required id="atividade" type="text" class="form-control custom-input" placeholder="Atividade realizada">
-          <app-secondary-button (click)="addActivity()" [isButtonDisabled]="activity.length == 0" buttonText="Adicionar" phClass="ph ph-plus "></app-secondary-button>
+          <app-secondary-button (click)="addActivity()" [isButtonDisabled]="!activity || activity.length == 0" buttonText="Adicionar" phClass="ph ph-plus "></app-secondary-button>
         </div>
       </div>
     </div>

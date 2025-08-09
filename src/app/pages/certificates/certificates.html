@@ -4,19 +4,22 @@
     <p class="custom-subtitle mb-4">Visualize todos os certificados gerados</p>
   </div>
 
-  <div class="custom-card w-100">
-    <i class="ph ph-certificate"></i>
-    <div class="custom-warning-titles">
-      <h3 class="card-title">Nenhum certificado gerado</h3>
-      <p class="card-subtitle">Gere certificados para consultar o histórico</p>
+  @if (certificates.length == 0) {
+    <div class="custom-card w-100">
+      <i class="ph ph-certificate"></i>
+      <div class="custom-warning-titles">
+        <h3 class="card-title">Nenhum certificado gerado</h3>
+        <p class="card-subtitle">Gere certificados para consultar o histórico</p>
+      </div>
+      <app-secondary-button buttonText="Gerar certificado" (click)="redirectToGenerateCertificate()"></app-secondary-button>
     </div>
-    <app-secondary-button buttonText="Gerar certificado" (click)="redirectToGenerateCertificate()"></app-secondary-button>
-  </div>
-</div>
+  } @else {
+      <div class="list-certificates w-100">
+        @for (item of certificates; track $index) {
+          <app-item-certificate></app-item-certificate>
+        }
+      </div>
+    }
 
-<!--<div class="list-certificates w-100">
-  <app-item-certificate></app-item-certificate>
-  <app-item-certificate></app-item-certificate>
-  <app-item-certificate></app-item-certificate>
-  <app-item-certificate></app-item-certificate>
-</div> -->
+
+

@@ -21,27 +21,27 @@
         <label for="atividade" class="form-label">Atividade</label>
         <div class="d-flex align-items-center gap-2">
           <input [(ngModel)]="activity" name="activity" #activityRef="ngModel" maxlength="50" required id="atividade" type="text" class="form-control custom-input" placeholder="Atividade realizada">
-          <app-secondary-button [isButtonDisabled]="activity.length == 0" buttonText="Adicionar" phClass="ph ph-plus "></app-secondary-button>
+          <app-secondary-button (click)="addActivity()" [isButtonDisabled]="activity.length == 0" buttonText="Adicionar" phClass="ph ph-plus "></app-secondary-button>
         </div>
       </div>
     </div>
     @if (activities.length > 0) {
       <div class="activities-group">
-      <label class="form-label">Lista de atividades</label>
-      <div class="item-list w-100">
-        @for(activity of activities; track $index) {
-          <div class="item">
-            <span class="item-text">{{activity}}</span>
-            <div class="remove-btn">
-              <i class="ph ph-x"></i>
+        <label class="form-label">Lista de atividades</label>
+        <div class="item-list w-100">
+          @for(activity of activities; track $index) {
+            <div class="item">
+              <span class="item-text">{{activity}}</span>
+              <div (click)="removeActivity($index)" class="remove-btn">
+                <i class="ph ph-x"></i>
+              </div>
             </div>
-          </div>
-          @if ($index + 1 != activities.length) {
-            <hr>
+            @if ($index + 1 != activities.length) {
+              <hr>
+            }
           }
-        }
+        </div>
       </div>
-    </div>
     }
 
     <app-primary-button [isButtonDisabled]="!isValidForm()" buttonText="Gerar certificado"></app-primary-button>

@@ -12,7 +12,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 export class CertificateForm {
   name: string = '';
   activity: string = '';
-  activities: string[] = [''];
+  activities: string[] = [];
 
   isInvalidField(control: NgModel) {
     return control.invalid && control.touched;
@@ -20,5 +20,14 @@ export class CertificateForm {
 
   isValidForm() {
     return this.name.length > 0 && this.activities.length > 0;
+  }
+
+  addActivity() {
+    this.activities.push(this.activity);
+    this.activity = '';
+  }
+
+  removeActivity(index: number) {
+    this.activities.splice(index, 1);
   }
 }

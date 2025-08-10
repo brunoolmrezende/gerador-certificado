@@ -5,6 +5,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { Certificate } from '../../interfaces/certificate';
 import { CertificateService } from '../../_services/certificate.service';
 import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-certificate-form',
@@ -14,14 +15,17 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class CertificateForm {
 
-  constructor(private certificateService: CertificateService) { }
+  constructor(private certificateService: CertificateService, private router: Router) { }
   @ViewChild('form') form!: NgForm;
 
-  name: string = '';
-  activity: string = '';
-  activities: string[] = [];
+  certificate: Certificate = {
+    id: '',
+    name: '',
+    activities: [],
+    date: ''
+  };
 
-  certificate: Certificate | undefined;
+  activity: string = '';
 
   isInvalidField(control: NgModel) {
     return control.invalid && control.touched;
@@ -29,35 +33,31 @@ export class CertificateForm {
 
   isValidForm() {
     return (
-      this.name && this.name.length > 0 && Array.isArray(this.activities) && this.activities.length > 0
+      this.certificate.name.length > 0 && this.certificate.activities.length > 0
     );
   }
 
   addActivity() {
     if (this.activity.length === 0) return;
 
-    this.activities.push(this.activity);
+    this.certificate.activities.push(this.activity);
     this.activity = '';
   }
 
   removeActivity(index: number) {
-    this.activities.splice(index, 1);
+    this.certificate.activities.splice(index, 1);
   }
 
   submit() {
     if (!this.isValidForm()) return;
 
-    this.certificate = {
-      id: uuidv4(),
-      name: this.name,
-      activities: this.activities,
-      date: this.actualDate()
-    };
-
+    this.certificate.date = this.actualDate();
+    this.certificate.id = uuidv4();
     this.certificateService.addCertificate(this.certificate);
 
+    this.router.navigate(['/certificates', this.certificate.id]);
+
     this.certificate = this.initialStateCertificate();
-    this.activities = []
     this.form.resetForm();
   }
 
@@ -70,12 +70,12 @@ export class CertificateForm {
     return `${day}/${month}/${year}`;
   }
 
-  initialStateCertificate() : Certificate {
+  initialStateCertificate(): Certificate {
     return {
       id: '',
       name: '',
       activities: [],
       date: ''
-    }
+    };
   }
 }

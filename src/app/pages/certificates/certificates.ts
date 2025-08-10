@@ -3,6 +3,7 @@ import { ItemCertificate } from "../../_components/item-certificate/item-certifi
 import { SecondaryButton } from "../../_components/secondary-button/secondary-button";
 import { Router } from '@angular/router';
 import { CertificateService } from '../../_services/certificate.service';
+import { Certificate } from '../../interfaces/certificate';
 
 @Component({
   selector: 'app-certificates',
@@ -11,15 +12,16 @@ import { CertificateService } from '../../_services/certificate.service';
   styleUrl: './certificates.css'
 })
 export class Certificates implements OnInit {
+
+  certificates: Certificate[] = [];
+
   constructor(private router: Router, private certificateService: CertificateService) {}
-
-  public certificates: any[] = [];
-
-  ngOnInit(): void {
-    this.certificates = this.certificateService.certificates;
-  }
 
   redirectToGenerateCertificate() {
     this.router.navigate(['/certificates/new']);
+  }
+
+  ngOnInit(): void {
+    this.certificates = this.certificateService.certificates.reverse();
   }
 }

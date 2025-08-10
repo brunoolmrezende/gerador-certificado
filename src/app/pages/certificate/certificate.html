@@ -4,27 +4,32 @@
       <i class="ph ph-arrow-left"></i>
       <p class="m-0">Voltar</p>
     </div>
-    <app-secondary-button></app-secondary-button>
+    <app-secondary-button phClass="ph ph-download-simple" buttonText="Download"></app-secondary-button>
   </div>
-  <div class="certificate d-flex flex-column align-items-center justify-content-center">
-    <img class="ribbon-certificate" src="certificate/certificate_Ribbon.png" alt="certificate ribbon">
-    <div class="content-certificate">
-      <img class="signature-certificate" src="certificate/certificate_Signature.svg" alt="signature">
-      <div class="info-certificate d-flex flex-column align-items-center">
-        <div class="title-subtitle-certificate d-flex flex-column align-items-center">
-          <h1>CERTIFICADO DE CONCLUSÃO</h1>
-          <p>Este certificado comprova que</p>
+  @if (certificate) {
+    <div class="certificate d-flex flex-column align-items-center justify-content-center">
+      <img class="ribbon-certificate" src="certificate/certificate_Ribbon.png" alt="certificate ribbon">
+      <div class="content-certificate">
+        <img class="signature-certificate" src="certificate/certificate_Signature.svg" alt="signature">
+        <div class="info-certificate d-flex flex-column align-items-center">
+          <div class="title-subtitle-certificate d-flex flex-column align-items-center">
+            <h1>CERTIFICADO DE CONCLUSÃO</h1>
+            <p>Este certificado comprova que</p>
+          </div>
+          <p class="student-name">{{certificate.name}}</p>
+          <div class="activities d-flex flex-column align-items-center">
+            @if (certificate.activities.length === 1) {
+              <p>Concluiu com sucesso a seguinte atividade:</p>
+            } @else {
+              <p>Concluiu com sucesso as seguintes atividades:</p>
+            }
+            <p class="list-activities">
+              {{certificate.activities.join(', ')}}
+            </p>
+          </div>
         </div>
-        <p class="student-name">Ana Silva Lopes</p>
-        <div class="activities d-flex flex-column align-items-center">
-          <p>Concluiu com sucesso as seguintes atividades:</p>
-          <p class="list-activities">
-            Introdução ao Angular, Configuração com Angular CLI, Criação de componentes reutilizáveis, Manipulação de dados,
-            Implementação de data binding, Criação de rotas com Angular Router, Consumo de APIs REST
-          </p>
-        </div>
+        <p class="issue-date">Emitido em {{certificate.date}}</p>
       </div>
-      <p class="issue-date">Emitido em 25/04/2025</p>
     </div>
-  </div>
+  }
 </div>

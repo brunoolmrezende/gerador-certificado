@@ -13,10 +13,12 @@ export class App implements OnInit {
   protected title = 'gerador-certificado';
   exibeNavbar: boolean = true;
 
-  constructor(private certificateService: CertificateService) { }
+  constructor(private certificateService: CertificateService) {}
 
   ngOnInit(): void {
     const certificates = localStorage.getItem('certificates');
-    this.certificateService.certificates = certificates ? JSON.parse(certificates) : [];
+    this.certificateService.certificates = certificates
+    ? JSON.parse(certificates)
+    : [];
   }
 }

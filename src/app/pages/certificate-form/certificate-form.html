@@ -8,7 +8,7 @@
     <h2 class="card-title">Novo certificado</h2>
     <div class="mb-3 custom-input-group">
       <label for="nome" class="form-label">Nome completo</label>
-      <input [(ngModel)]="name" name="name" #nameRef="ngModel" maxlength="150" required id="nome" type="text" class="form-control custom-input" placeholder="Digite seu nome completo">
+      <input [(ngModel)]="certificate.name" name="name" #nameRef="ngModel" maxlength="150" required id="nome" type="text" class="form-control custom-input" placeholder="Digite seu nome completo">
       @if (isInvalidField(nameRef)) {
         <div class="error-message d-flex align-items-center">
           <i class="ph ph-warning-circle"></i>
@@ -25,18 +25,18 @@
         </div>
       </div>
     </div>
-    @if (activities.length > 0) {
+    @if (certificate.activities.length > 0) {
       <div class="activities-group">
         <label class="form-label">Lista de atividades</label>
         <div class="item-list w-100">
-          @for(activity of activities; track $index) {
+          @for(activity of certificate.activities; track $index) {
             <div class="item">
               <span class="item-text">{{activity}}</span>
               <div (click)="removeActivity($index)" class="remove-btn">
                 <i class="ph ph-x"></i>
               </div>
             </div>
-            @if ($index + 1 != activities.length) {
+            @if ($index + 1 != certificate.activities.length) {
               <hr>
             }
           }
